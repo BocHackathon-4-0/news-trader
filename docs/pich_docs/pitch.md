@@ -6,7 +6,7 @@ marp: true
 ## Fullstack Web3 Application.
 ### MTNSA: serves as a helpful tool for traders and investors. It empowers users to make informed decisions by analyzing market sentiments derived from news. 📲 💹 💸
 
-#### Teledev: Aleksey Savin, Alexander Badaev
+#### Teledev: Aleksey Savin, Alexander Belov
 BOC Fintech Hackathon 4.0, Bank of Cyprus, 2023
 
 ---
@@ -17,19 +17,24 @@ BOC Fintech Hackathon 4.0, Bank of Cyprus, 2023
 | ![](img/alxy_mini.jpeg) | ![](img/baadev_mini.jpeg) | Now, the Teledev team consists of Alexandr and Aleksey. We've been working together on the 'Multiuser Trade News Sentiment Analysis' project for a while now, and our collaboration is off to a great start.
 ---
 # Problem 🤷
-#### 1. Market Gap 🕺: Our platform offers real-time trade news and sentiment analysis, addressing the need for timely market insights.
-#### 2. Customers 🦹‍♀️: We serve both experienced traders and novice investors with data-driven insights to enhance their strategies.
-#### 3. Costs 🧙‍♂️: We prioritize competitive pricing for high-value services.
-#### 4. Usability 👨‍💼: Our user-friendly interface enables traders at all levels to access our tools effortlessly.
-#### 5. Financials: We're committed to project sustainability through strategic revenue generation and cost management for lasting user value.
-
+#### 1. Market Gap 🕺: Our platform addresses the challenge of accurately predicting future price movements despite the use of various analytical methods and tools. Market volatility, external factors, and unexpected events can complicate the forecasting process significantly.
+#### 2. Customers 🦹‍♀️: We provide data-driven insights to serve both experienced traders and novice investors, helping them navigate the complexities of price prediction in a volatile market.
+#### 3. Costs 🧙‍♂️: We prioritize competitive pricing to address the financial challenges traders may face while accessing high-value services.
+#### 4. Usability 👨‍💼: Ensuring usability for traders at all levels is a significant challenge in providing easy access to our tools.
 ---
 # Solution 💆‍♂️
 #### 1. Closing the Gap 🏪: We offer a complete cycle from signal acquisition to trade execution, ensuring comprehensive market coverage and timely decision-making.
 #### 2. Target Audience 💅: Our primary audience consists of traders, catering to their diverse needs and strategies in the financial markets.
 #### 3. Cost Saving ☕️: We excel in analyzing large volumes of data and conducting contextual and methodological document-based queries, leading to substantial cost savings.
-#### 4. Easy to Use 📲: Our platform is user-friendly; simply connect your wallet to access 100 signals. Signal tracking is blockchain-based, ensuring transparency and accountability for a seamless trading experience.
+#### 4. Easy to Use 📲: Our platform's user-friendly interface allows you to effortlessly connect your wallet and gain access to signals. We've implemented blockchain-based signal tracking to guarantee transparency and accountability, delivering a seamless trading experience.
 ---
+## Innovate 🚀
+1. **Real-time Insights** ⏳: Multiuser sentiment analysis offers real-time market sentiment data, aiding traders and investors in quick decision-making amidst fast-paced markets.
+2. **Data Aggregation** 📈: It consolidates vast data from diverse sources like social media, news, and market data, providing a holistic understanding of market sentiment.
+3. **Machine Learning** 👨‍🏫: Utilizing advanced machine learning, it processes sentiment data with increasing precision and predictive capabilities.
+4. **Risk Management** ⚠️: Sentiment analysis helps identify market risks and trends, enabling proactive risk mitigation and refined trading strategies in blockchain, crypto, and fintech markets.
+---
+# The Progress during hackathon
 ## 🤖 Agents - small programs - are our helpers, here are the results: 
 
 | 💹 | 💹 |
@@ -68,8 +73,14 @@ Screens 1, 2
 ### Mock up 2: React Web App
 | 📲 | ✅ | | 
 | ---- | ---- | ------------ | 
-| ![](img/spa_3_web4.jpeg) | ![](img/spa_2.jpeg) | 
+| ![](img/spa_4.jpeg) | ![](img/spa_2_1.jpeg) | 
 Screens 3, 4
+---
+### Mock up 4: React Web App
+| 📲 | ✅ | | 
+| ---- | ---- | ------------ | 
+| ![](img/image_5.jpeg) | ![](img/spa_2_2.jpeg) | 
+Screens 5, 6
 ---
 
 ## Roadmap ⛳️
@@ -82,12 +93,14 @@ Screens 3, 4
  It's exciting to see how an idea in January 2021 (Two thousand twenty-one) will transform into a tangible product by the end of the year. The question mark at the end leaves us curious and eager for the big release in the future! 🚀🌟
 
 ---
-## Our Support Service 🫶
+## Special promotion
+### For Bank of Cyprus 🇨🇾: Enjoy a 75% discount on signals. Get in early! 🤑❤️. Connect your account for trading now! 🚀
+## Our Support Service 🫶 for B2B
 At our service, you'll find 24/7 online support, staffed by a team of friendly designers and consultants who are dedicated to ensuring your satisfaction. Plus, we stand by our commitment with a money-back guarantee. Your peace of mind is our top priority! 😊🌟
 
 ---
 
-## Key Takeaways
+## Key Takeaways 🎼
 
 1. 🇩🇪 Cloud Database in Frankfurt 
 2. 📄 React SPA 
