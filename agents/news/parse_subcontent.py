@@ -40,7 +40,7 @@ def parse_more_data(news_item):
         docs = loader.load()
         return docs
 
+    print('summary... 🤖')
     short_sum = get_short_content_summary(news_item)
     full_sum = get_full_content_summary(news_item)
-
     return {'summary_short': short_sum, 'summary_long': full_sum}

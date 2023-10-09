@@ -90,7 +90,12 @@ def get_answer_from_gpt_model(system_text: str = None,
                               user_text: str = None,
                               retry=False, temp=0.1,
                               max_tokens=5000) -> str | None:
-    # Prepare headers
+
+    if os.environ.get('YIAM') == 'update':
+        token = get_yandex_token_with_auth()
+        os.environ['YIAM'] = token.get('iamToken')
+    
+        # Prepare headers
     headers = {
         "Authorization": f"Bearer {os.getenv('YIAM')}",
         "x-folder-id": os.getenv('YIAM_FOLDER')
@@ -112,30 +117,18 @@ def get_answer_from_gpt_model(system_text: str = None,
         "requestText": text
     }
 
+    
+    
     url = 'https://llm.api.cloud.yandex.net/llm/v1alpha/instruct'
 
+
     response = requests.post(url, headers=headers, json=params)
-
-    get_yiam_token_response_json = get_yandex_token_with_auth()
-    if 'iamToken' in get_yiam_token_response_json:
-        os.environ['YIAM'] = get_yiam_token_response_json.get('iamToken' or None)
-
     if response.status_code == 200:
         try:
             result = response.json()
             return result['result']['alternatives'][0]['text']
-        except KeyError:
-            # Handle the case where the 'alternatives' key is missing
-            get_yiam_token_response_json = get_yandex_token_with_auth()
-            if 'iamToken' in get_yiam_token_response_json:
-                os.environ['YIAM'] = get_yiam_token_response_json.get('iamToken' or None)
-            if not retry:
-                return get_answer_from_gpt_model(user_text=user_text, retry=True)
-            else:
-                return None
-        except Exception:
-            # Handle any other exceptions
-            return None
+        except Exception as E:
+            print(E)
     else:
         return None
 

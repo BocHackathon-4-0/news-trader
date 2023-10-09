@@ -4,8 +4,10 @@ import dotenv
 import os
 import multiprocessing
 from supabase import create_client, Client
+from tqdm import tqdm  # Import the tqdm function
 
-dotenv.load_dotenv('../../.env')
+
+dotenv.load_dotenv('../.env')
 CRYPTO_PANIC_API = os.getenv('CRYPTO_PANIC_API')
 SUPABASE_URL = os.getenv('SUPABASE_URL')
 SUPABASE_KEY = os.getenv('SUPABASE_KEY')
@@ -25,29 +27,33 @@ from parse_subcontent import parse_more_data
 
 # Define worker_function here, outside any functions
 def supabase_worker(arg):
-    for result in arg:
+    for result in tqdm(arg):
         if 'id' not in result:
             continue
-        response = supabase.table('news').select("*").eq('id', result.get('id')).execute()
-
-        result['summary'] = parse_more_data(result)
-
-        # if not exist insert
-        if len(response.data) == 0:
-            try:
-                data = supabase.table('news').insert({'id': result.get('id'), 'obj': result, 'source': 'cp'}).execute()
+        
+        sdbobj = supabase.table('news').select("*").eq('id', result.get('id')).execute()
+        if len(sdbobj.data) > 0:
+            if 'summary' in sdbobj.data[0].get('obj'):
+                result['summary'] = sdbobj.data[0]['obj']['summary']
+                data = supabase.table('news').update({'obj': result, 'source': 'cp'}).eq('id', result.get('id')).execute()
+                assert len(data.data) > 0    
+                continue         
+            else:
+                sdbobj.data[0]['obj']['summary'] = parse_more_data(result)
+                data = supabase.table('news').update({'obj': sdbobj.data[0]['obj'], 'source': 'cp'}).eq('id', result.get('id')).execute()
                 assert len(data.data) > 0
-            except Exception as E:
-                print(E)
-
-        elif len(response.data) > 0:
+                continue
+            
+        else:
             try:
-                data = supabase.table('news').update({'obj': result}).eq('id', result.get('id')).execute()
+                result['summary'] = parse_more_data(result)
+                news_id = result.get('id')
+                data = supabase.table('news').insert({'id': news_id, 'obj': result, 'source': 'cp'}).execute()
                 assert len(data.data) > 0
-            except Exception as E:
-                print(E)
-
-    return 'Ok'
+                continue
+            except Exception as e:
+                print(e)
+                continue
 
 
 async def fetch_data(url, headers, payload):
@@ -70,7 +76,7 @@ async def fetch_data(url, headers, payload):
 
 
 async def upload_news(news: list):
-    for new in news:
+    for new in tqdm(news):
         supabase_worker(new)
 
     # Create a multiprocessing Pool with the desired number of processes
